@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Support for building with Meson.
+
 ### Changed
 
 - Switch license to MIT.
