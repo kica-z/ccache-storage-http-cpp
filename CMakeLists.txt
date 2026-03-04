@@ -62,5 +62,5 @@ install(CODE "execute_process(COMMAND \${CMAKE_COMMAND} -E create_symlink ccache
 find_program(CLANG_FORMAT clang-format)
 if(CLANG_FORMAT)
   file(GLOB_RECURSE ALL_SOURCE_FILES src/*.cpp src/*.hpp)
-  add_custom_target(format COMMAND ${CLANG_FORMAT} -i ${ALL_SOURCE_FILES} COMMENT "Running clang-format on all source files" VERBATIM)
+  add_custom_target(clang-format COMMAND ${CLANG_FORMAT} -i ${ALL_SOURCE_FILES} COMMENT "Running clang-format on all source files" VERBATIM)
 endif()
