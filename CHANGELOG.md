@@ -6,6 +6,10 @@
 
 - Source release archives.
 
+### Changed
+
+- Rename project to `ccache-storage-http-cpp` for clarity.
+
 ## [0.2] - 2026-03-05
 
 ### Added

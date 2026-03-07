@@ -1,5 +1,5 @@
 project(
-  'ccache-storage-http',
+  'ccache-storage-http-cpp',
   'cpp',
   version: '0.2',
   default_options: [
