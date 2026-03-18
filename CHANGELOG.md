@@ -6,6 +6,11 @@
 
 - tar.gz release archive.
 
+### Changed
+
+- Change working directory to `/` (or `C:\` on Windows) to avoid blocking
+  removal of the directory the server was started from.
+
 ## [0.4] - 2026-03-15
 
 ### Changed

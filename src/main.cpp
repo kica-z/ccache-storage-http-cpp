@@ -9,6 +9,12 @@
 
 #include <uv.h>
 
+#ifdef _WIN32
+#  include <direct.h>
+#else
+#  include <unistd.h>
+#endif
+
 #include <cstdlib>
 #include <iostream>
 
@@ -56,6 +62,16 @@ int main()
     LOG("Failed to initialize IPC server");
     return 1;
   }
+
+#ifdef _WIN32
+  if (_chdir("C:\\") != 0) {
+    LOG("Failed to chdir to C:\\");
+  }
+#else
+  if (chdir("/") != 0) {
+    LOG("Failed to chdir to /");
+  }
+#endif
 
   int result = uv_run(loop, UV_RUN_DEFAULT);
   LOG("Event loop exited with code " + std::to_string(result));
