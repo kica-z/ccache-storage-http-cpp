@@ -34,16 +34,13 @@ int main()
 
   init_logger();
 
+  LOG("Starting");
+
   auto config = parse_config();
   if (!config) {
     LOG("Failed to parse configuration");
     return 1;
   }
-
-  LOG("Starting");
-  LOG("IPC endpoint: " + config->ipc_endpoint);
-  LOG("URL: " + config->url);
-  LOG("Idle timeout: " + std::to_string(config->idle_timeout_seconds));
 
   uv_loop_t* loop = uv_default_loop();
   if (!loop) {

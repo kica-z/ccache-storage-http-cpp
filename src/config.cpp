@@ -45,6 +45,7 @@ std::optional<Config> parse_config()
 #else
   config.ipc_endpoint = ipc_endpoint;
 #endif
+  LOG("IPC endpoint: " + config.ipc_endpoint);
 
   const char* url = std::getenv("CRSH_URL");
   if (!url || url[0] == '\0') {
@@ -52,6 +53,7 @@ std::optional<Config> parse_config()
     return std::nullopt;
   }
   config.url = url;
+  LOG("URL: " + config.url);
 
   const char* idle_timeout = std::getenv("CRSH_IDLE_TIMEOUT");
   if (!idle_timeout || idle_timeout[0] == '\0') {
@@ -63,6 +65,7 @@ std::optional<Config> parse_config()
     return std::nullopt;
   }
   config.idle_timeout_seconds = *idle_val;
+  LOG("Idle timeout: " + std::to_string(config.idle_timeout_seconds));
 
   const char* num_attr_str = std::getenv("CRSH_NUM_ATTR");
   if (!num_attr_str || num_attr_str[0] == '\0') {
@@ -92,6 +95,8 @@ std::optional<Config> parse_config()
 
     std::string key_str(key);
     std::string value_str(value);
+
+    LOG("Attribute: " + key_str + "=" + value_str);
 
     if (key_str == "bearer-token") {
       config.bearer_token = value_str;
