@@ -8,6 +8,10 @@
   authentication.
 - Logging of attributes.
 
+### Fixed
+
+- Installation of ccache-storage-https.exe on Windows.
+
 ## [0.5] - 2026-03-18
 
 ### Added

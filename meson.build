@@ -22,15 +22,25 @@ sources = files(
   'src/storage_client.cpp',
 )
 
-executable(
+ccache_storage_http = executable(
   'ccache-storage-http',
   sources,
   dependencies: [dependency('libcurl'), dependency('libuv')],
   install: true,
 )
 
-install_symlink(
-  'ccache-storage-https',
-  pointing_to: 'ccache-storage-http',
-  install_dir: get_option('bindir')
-)
+if host_machine.system() == 'windows'
+  fs = import('fs')
+  fs.copyfile(
+    ccache_storage_http.full_path(),
+    'ccache-storage-https.exe',
+    install: true,
+    install_dir: get_option('bindir'),
+  )
+else
+  install_symlink(
+    'ccache-storage-https',
+    pointing_to: 'ccache-storage-http',
+    install_dir: get_option('bindir'),
+  )
+endif
