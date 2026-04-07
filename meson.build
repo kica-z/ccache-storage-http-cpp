@@ -1,7 +1,7 @@
 project(
   'ccache-storage-http-cpp',
   'cpp',
-  version: '0.5',
+  version: files('version.txt'),
   default_options: [
     'cpp_std=c++17',
     'b_ndebug=if-release',
